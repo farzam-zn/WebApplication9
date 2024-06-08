@@ -1,0 +1,70 @@
+﻿@using WebApplication9.ViewModels
+
+@model ProductView
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Create Invoice</h2>
+			<hr />
+		</div>
+
+		<div class="mb-3 row">
+			<label class="p-0"></label>
+			<div class="mb-3 row">
+				@*<div class="mb-3 row">
+					<label class="p-0">Number of items</label>
+					<input asp-for="NumberofItems" type="text" class="form-control" />
+				</div>*@
+				<div class="mb-3 row">
+					<label class="p-0">Invoice Number</label>
+					<input asp-for="@Model.invoice.InvoiceNumber" type="text" class="form-control" />
+				</div>
+			@*	<div class="mb-3 row">
+					
+					<input asp-for="SupplierId"  type="text" class="form-control" />
+				</div>*@
+				<label class="p-0">Supplier Name</label>
+				<select asp-for="@Model.invoice.SupplierId" class="form-control" asp-items="@Model.SupplierNameList" asp-controller="Invoice" asp-action="InvoiceCreate" ></select>
+@*
+				<div class="mb-3 row">
+					<label class="p-0">Creation Date</label>
+					<input asp-for="CreationDate" type="text" class="form-control" />
+				</div>
+			</div>*@
+			@*<div class="mb-3 row">
+	<label class="p-0">Invoice Id</label>
+				<input asp-for="InvoiceId" type="text" class="form-control" />
+	</div>
+			<div class="mb-3 row">
+				<label class="p-0">User Id</label>
+				<input asp-for="UserId" type="text" class="form-control" />
+			</div>
+			<div class="mb-3 row">
+				<label class="p-0">Creation Date</label>
+				<input asp-for="CreationDate" type="text" class="form-control" />
+			</div>
+			<div class="mb-3 row">
+				<label class="p-0"> Supplier Id</label>
+				<input asp-for="SupplierId" type="text" class="form-control" />
+			</div>
+			<div class="mb-3 row">
+				<label class="p-0"> payment Id</label>
+				<input asp-for="PaymentId" type="text" class="form-control" />
+			</div>*@
+
+		</div>
+		<div class="row">
+			<div class="col-6 col-md-3">
+				<button asp-controller="Invoice" asp-action="InvoiceCreate" type="submit" class="btn btn-primary form-control">Create</button>
+
+			</div>
+			<div class="col-6">
+				<a asp-controller="Invoice" asp-action="Invoice" class="btn btn-outline-secondary form-control">
+					back to list
+				</a>
+			</div>
+
+		</div>
+	</div>
+
+</form>

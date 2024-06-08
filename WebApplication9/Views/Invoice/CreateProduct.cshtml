@@ -1,0 +1,125 @@
+﻿@using WebApplication9.ViewModels
+@model CategoryProdcut
+
+<form method="post" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-10">
+			<div class="border p-3 mt-4">
+				<div class="row pb-2">
+					<h2 class="text-primary">Create Product</h2>
+					<hr />
+				</div>
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+				<div class="mb-3 row">
+					<label class="p-0"></label>
+					<div class="mb-3 row">
+						@*<div class="mb-3 row">
+						<label class="p-0">Number of items</label>
+						<input asp-for="NumberofItems" type="text" class="form-control" />
+						</div>*@
+						<div class="mb-3 row">
+							<label class="p-0">Product Name</label>
+							<input asp-for="@Model.product.Name" asp-controller="Invoice" asp-action="CreateProduct" id="name" class="form-control" type="text" />
+						</div>
+						<div class="mb-3 row">
+							<label class="p-0">Color</label>
+							<input asp-for="@Model.product.Color" asp-controller="Invoice" asp-action="CreateProduct" class="form-control" type="text" />
+						</div>
+						<div class="mb-3 row">
+							<label class="p-0">List Price</label>
+							<input asp-for="@Model.product.ListPrice" asp-controller="Invoice" asp-action="CreateProduct" class="form-control" type="text" />
+						</div>
+						<div class="mb-3 row">
+							<label class="p-0">Price for 100</label>
+							<input asp-for="@Model.product.Price100" asp-controller="Invoice" asp-action="CreateProduct" class="form-control" type="text" />
+						</div>
+						<div class="mb-3 row">
+							<label class="p-0">Price for 50</label>
+							<input asp-for="@Model.product.Price50" asp-controller="Invoice" asp-action="CreateProduct" class="form-control" type="text" />
+						</div>
+						<div class="mb-3 row">
+							<label class="p-0">Category</label>
+							<select id="category" asp-items="@Model.ListOfCategories" class="form-control" asp-for="@Model.product.Category.Id"></select>
+						</div>
+						@* 	<div class="form-floating py-2 col-12">
+						<textarea id="mytextarea" asp-for="@Model.product.Description"></textarea>
+						<label asp-for="@Model.product.Description" class="ms-2"></label>
+						</div> *@
+						<div class="form-floating py-2 col-12">
+							<textarea id="mytextarea" asp-for="@Model.product.Description"></textarea>
+							<label asp-for="@Model.product.Description" class="ms-2"></label>
+						</div>
+						<div class="form-floating py-2 col-12">
+							<input type="file" name="file" class="form-control border-0 shadow" />
+							<label  class="ms-2"></label>
+						</div>
+					</div>
+				</div>
+				@*<div class="mb-3 row">
+				<label class="p-0">Invoice Id</label>
+				<input asp-for="InvoiceId" type="text" class="form-control" />
+				</div>
+				<div class="mb-3 row">
+				<label class="p-0">User Id</label>
+				<input asp-for="UserId" type="text" class="form-control" />
+				</div>
+				<div class="mb-3 row">
+				<label class="p-0">Creation Date</label>
+				<input asp-for="CreationDate" type="text" class="form-control" />
+				</div>
+				<div class="mb-3 row">
+				<label class="p-0"> Supplier Id</label>
+				<input asp-for="SupplierId" type="text" class="form-control" />
+				</div>
+				<div class="mb-3 row">
+				<label class="p-0"> payment Id</label>
+				<input asp-for="PaymentId" type="text" class="form-control" />
+				</div>*@
+
+			</div>
+			<div class="row">
+				<div class="col-6 col-md-3">
+					<button id="Create" class="btn btn-primary" asp-controller="Invoice" asp-action="CreateProduct" type="submit">Create</button>
+
+				</div>
+			</div>
+		</div>
+@* 		<div class="col-2">
+			<img src="@Model.product.ImageUrl" width="100%" 
+			style="border-radius:5px; border:1px solid"/>
+	</div> *@
+
+</form>
+	@* <script type="text/javascript">
+		 $(function () {
+
+			 $("#Create").click(function () {
+				 $.ajax({
+					 type: "POST",
+					 url: "/Invoice/AjaxMethod",
+					 data: { "name": $("#name").val(), "color": $("#color").val(), "category": $("#category").val() },
+					 success: function (response) {
+						 alert("the" + " " + response.name + " " + " has been successfully added.");
+						 $("#name").val("");
+						 $("#color").val("");
+					 },
+					 failure: function (response) {
+						 alert(response.responseText);
+					 },
+					 error: function (response) {
+						 alert(response.responseText);
+					 }
+				 });
+			 });
+		 });
+
+	</script>
+</div>
+ *@
+@section Scripts {
+	<script>
+						  tinymce.init({
+							  selector: 'textarea#mytextarea'
+						  });
+	</script>
+}

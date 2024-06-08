@@ -1,0 +1,59 @@
+﻿@using WebApplication9.ViewModels
+@using Models.Models;
+@model  List<Inv>
+
+<div class="container">
+	<div class="row pt-4 pb-3">
+		<div class="col-6">
+			<h2>Invoices list</h2>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-controller="Invoice" asp-action="InvoiceCreate" class="btn btn-primary">
+				Create new Invoice
+			</a>
+
+		</div>
+	</div>
+	<table class="table table-bordered table-dark">
+		<thead>
+			<tr>
+				<th>
+
+Invoice Number
+				</th>
+
+	<th>
+		Supplier Name
+	</th>
+					<th>
+						Creation Date
+					</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach(var x in Model){ 
+				<tr>
+					<td>@x.InvoiceNumber</td>
+					<td>@x.Sname</td>
+					<td>@x.CreationDate</td>
+					<td>
+						<div class="d-flex align-items-center justify-content-center w-75 btn-group" role="group">
+					@*		<a asp-controller="Category" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-light mx-2">
+								<i class="bi bi-pencil-square"></i>Edit
+							</a>*@
+							<a asp-controller="Invoice" asp-action="InvoiceDelete" asp-route-Id="@x.Id" class="btn btn-danger px-2">
+								Delete
+							</a>
+							<a  asp-controller="Invoice" asp-action="ViewDetails" asp-route-Id="@x.Id" class="btn btn-secondary  px-2">
+								View Details
+							</a>
+						</div>
+
+
+					</td>
+				</tr>
+			}
+		</tbody>
+
+	</table>
+		<div />

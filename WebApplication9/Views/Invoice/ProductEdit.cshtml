@@ -1,0 +1,125 @@
+﻿
+@using Models.Models;
+@model Product
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<div class="card shadow border-0 my-4">
+	<div class="card-body p-6">
+		<form method="post" enctype="multipart/form-data">
+			<div class="row">
+				<div class="col-9">
+					<div class="border p-3 mt-4">
+						<div class="row pb-2">
+							<h2 class="text-primary">Product Edit</h2>
+							<hr />
+							<div class="mb-3 row">
+								<label class="p-0">Color</label>
+								@*<input asp-for="invoiceDetails.ProductId" asp-route-Name="ProductName" asp-controller="Invoice" asp-action="Test" type="text" class="form-control" />*@
+								@*				<select asp-for="invoiceDetails.ProductId" asp-items="@(new SelectList(Model.Listofproducts))"></select>
+								*@
+								@*<select asp-for="@Model.invoiceDetails.ProductId" class="form-control" asp-items="@Model.Listofproducts"></select>		*@		@*	<div class="mb-3 row">
+								<label class="p-0">ComapnyName</label>
+
+								<select asp-for="@Model.companySupplier.Id" class="form-control" asp-items="@Model.Companylist"asp-controller="Invoice" asp-action="Test"></select>
+								</div>*@
+								@*	<div class="mb-3 row">
+								<label class="p-0">Quantity</label>
+								<input asp-for="Quantity" asp-controller="Invoice" asp-action="InvoiceEdit" type="hidden" class="form-control" />
+								@*					<input asp-for="invoiceDetails.InvoiceId" asp-controller="Invoice" asp-action="Test" type="hidden" class="form-control" />
+								*@		@*			<input asp-for="Quantity" asp-controller="Invoice" asp-action="InvoiceEdit" type="text" class="form-control" />
+								</div>*@
+								<input asp-for="@Model.Id" asp-controller="Invoice" asp-action="ProductEdit" type="hidden" class="form-control" />
+								<div class="mb-3 row">
+									<label class="p-0"></label>
+										<input asp-for="@Model.Color" asp-controller="Invoice" asp-action="ProductEdit" type="text" class="form-control" />
+								</div>
+								<div class="mb-3 row">
+									<label class="p-0">List Price</label>
+										<input asp-for="@Model.ListPrice" asp-controller="Invoice" asp-action="ProductEdit" type="text" class="form-control" />
+								</div>
+								<div class="mb-3 row">
+									<label class="p-0">Price 50</label>
+										<input asp-for="@Model.Price50" asp-controller="Invoice" asp-action="ProductEdit" type="text" class="form-control" />
+								</div>
+								<div class="mb-3 row">
+									<label class="p-0">Price 100</label>
+										<input asp-for="@Model.Price100" asp-controller="Invoice" asp-action="ProductEdit" type="text" class="form-control" />
+								</div>
+								<div class="form-floating py-2 col-12">
+									<textarea id="mytextarea" asp-for="@Model.Description"></textarea>
+									<label asp-for="@Model.Description" class="ms-2"></label>
+								</div>
+									<div class="form-floating py-2 col-12">
+										<input type="file" name="file" class="form-control border-0 shadow" />
+										<label class="ms-2"></label>
+									</div>
+							
+								<div class="mb-3 row">
+
+									<div class="form-group" asp-for="invoiceDetails.ExpiryDate" asp-controller="Invoice" asp-action="Test">
+										@*@Html.LabelFor(model=>model.invoiceDetails.ExpiryDate,new {@class="control-label"})*@
+										@*	@Html.EditorFor(model=>model.invoiceDetails.ExpiryDate,
+										new {AddHtmlAttributeValue=new {@readonly="true", value=  Model.invoiceDetails.ExpiryDate.ToString("dd,MMMM,yyyy"),
+										@class ="for-controler datepicker"
+										}}
+										)*@
+
+									</div>
+
+
+
+									@*	<label class="p-0">Expiry Date</label>
+									<input asp-for="invoiceDetails.ExpiryDate" asp-controller="Invoice" asp-action="Test" type="text" class="form-control" />*@
+								</div>
+								<div class="row">
+									<div class="col-6 col-md-3">
+										<button asp-controller="Invoice"  asp-action="ProductEdit" type="submit" class="btn btn-primary form-control mx-2">Update</button>
+										<i class="bi bi-pencil-square"></i>
+									</div>
+									@*	<div class="col-6 col-md-3">
+									<button asp-controller="Invoice" asp-action="Invoice" type="submit" class="btn btn-primary form-control">Done</button>
+
+									</div>*@
+									<div class="col-6">
+										<a asp-controller="Invoice" asp-action="ProductList" class="mx-2 btn btn-outline-secondary form-control">
+											back to list
+										</a>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+						</form>
+					</div>
+				<div class="col-3 mt-4">
+					<img src="@Model.ImageUrl" width="100%"
+						 style="border-radius:5px; border:1px solid white" />
+				</div>
+				</div>
+
+		
+	</div>
+</div>
+
+
+@section scripts{
+			<script src="~/lib/jquery/dist/jquery.min.js"></script>
+			<script>
+				$(function () {
+					$(".datepicker").datepicker({
+						dateformet: "yy-mm-dd",
+						changemonth: true,
+						changeYear: true,
+
+					});
+
+				})</script>
+	<script>
+		tinymce.init({
+			selector: 'textarea#mytextarea'
+		});
+	</script>
+	}
+

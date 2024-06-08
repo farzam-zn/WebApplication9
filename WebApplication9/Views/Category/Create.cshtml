@@ -1,0 +1,176 @@
+﻿@model Models.Models.Category
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Create Invoice</h2>
+			<hr />
+		</div>
+
+		<div class="mb-3 row">
+			<label class="p-0"></label>
+			<div class="mb-3 row">
+				@*<div class="mb-3 row">
+				<label class="p-0">Number of items</label>
+				<input asp-for="NumberofItems" type="text" class="form-control" />
+				</div>*@
+				<div class="mb-3 row">
+					<label class="p-0">Category</label>
+					<input asp-for="@Model.Name" type="text" class="form-control" />
+				</div>
+				@*	<div class="mb-3 row">
+
+				<input asp-for="SupplierId"  type="text" class="form-control" />
+				</div>*@
+@* 				<label class="p-0">Supplier Name</label>
+				<select asp-for="@Model.invoice.SupplierId" class="form-control" asp-items="@Model.SupplierNameList" asp-controller="Invoice" asp-action="InvoiceCreate"></select> *@
+				@*
+				<div class="mb-3 row">
+				<label class="p-0">Creation Date</label>
+				<input asp-for="CreationDate" type="text" class="form-control" />
+				</div>
+				</div>*@
+				@*<div class="mb-3 row">
+				<label class="p-0">Invoice Id</label>
+				<input asp-for="InvoiceId" type="text" class="form-control" />
+				</div>
+				<div class="mb-3 row">
+				<label class="p-0">User Id</label>
+				<input asp-for="UserId" type="text" class="form-control" />
+				</div>
+				<div class="mb-3 row">
+				<label class="p-0">Creation Date</label>
+				<input asp-for="CreationDate" type="text" class="form-control" />
+				</div>
+				<div class="mb-3 row">
+				<label class="p-0"> Supplier Id</label>
+				<input asp-for="SupplierId" type="text" class="form-control" />
+				</div>
+				<div class="mb-3 row">
+				<label class="p-0"> payment Id</label>
+				<input asp-for="PaymentId" type="text" class="form-control" />
+				</div>*@
+
+			</div>
+			<div class="row">
+				<div class="col-6 col-md-3">
+					<button asp-controller="Category" asp-action="Create" type="submit" class="btn btn-primary form-control">Create</button>
+
+				</div>
+				<div class="col-6">
+					<a asp-controller="Invoice" asp-action="Invoice" class="btn btn-outline-secondary form-control">
+						back to list
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* @model Category
+<form method="post" asp-controller="Category" asp-action="Create">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Create Category</h2>
+			<hr />
+		</div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<div class="mb-3 row">
+			<label class="p-0"></label>
+			<input  type="text" id="txtName" />
+		</div>
+
+
+		<div class="row">
+			<div class="col-6 col-md-3">
+				<button id="Create" class="btn btn-primary">Create</button>
+
+			</div>
+			<div class="col-6">
+				<a asp-controller="Category" asp-action="Category" class="btn btn-outline-secondary form-control">
+					back to list
+				</a>
+			</div>
+			<script type="text/javascript">
+		$(function () {
+			$("#Create").click(function () {
+				$.ajax({
+					type: "POST",
+					url: "/Category/AjaxMethod",
+					data: { "name": $("#txtName").val() },
+					success: function (response) {
+						alert("Hello: " + response.name + " .\nCurrent Date and Time: " + response.id);
+					},
+					failure: function (response) {
+						alert(response.responseText);
+					},
+					error: function (response) {
+						alert(response.responseText);
+					}
+				});
+			});
+		});
+	</script>
+		</div>
+	</div>
+
+
+<div>
+	<input type="text" id="txtName" />
+	<input type="button" id="btnGet" value="Get Current Time" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("#btnGet").click(function () {
+				$.ajax({
+					type: "POST",
+					url: "/Category/AjaxMethod",
+					data: { "name": $("#txtName").val() },
+					success: function (response) {
+						alert("Hello: " + response.name + " .\nCurrent Date and Time: " + response.id);
+					},
+					failure: function (response) {
+						alert(response.responseText);
+					},
+					error: function (response) {
+						alert(response.responseText);
+					}
+				});
+			});
+		});
+	</script>
+
+
+
+</div>
+
+</form> *@

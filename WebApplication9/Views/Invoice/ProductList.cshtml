@@ -1,0 +1,159 @@
+﻿@using WebApplication9.ViewModels
+
+@using Models.Models;
+@model List<RemainingViewModel>
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.Error))
+{
+		<div id="myModalLabel" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div  class="modal-header">
+        <h5 class="modal-title">Error</h5>
+    
+      </div>
+      <div class="modal-body">
+        <p>could not Delete this item.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"id="close" onclick="x" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+}
+@if (!string.IsNullOrWhiteSpace(ViewBag.Seccess))
+{
+
+	<div id="ModalLabel" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div  class="modal-header">
+					<h5 class="modal-title">
+						successful
+					</h5>
+				
+				</div>
+				<div class="modal-body">
+					<p>Done</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"id="close" onclick="x" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+<div class="container">
+	<div class="row pt-4 pb-3">
+		<div class="col-6">
+			<h2>Product list</h2>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-controller="Invoice" asp-action="CreateProduct" class="btn btn-primary">
+				Create new Product
+			</a>
+
+		</div>
+	</div>
+	<table class="table table-bordered table-dark">
+		<thead>
+			<tr>
+				<th>
+              Product Name
+				</th>
+				<th>
+				Category
+				</th>
+				<th>
+				color
+				</th>
+				<th>
+					List Price
+				</th>
+				<th>
+					Price for 100
+				</th>
+				<th>
+					price for 50
+				</th>
+				<th>
+					Quantity
+				</th>
+				<th>
+					Remaining Quantity
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			@foreach (var x in Model)
+			{
+				<tr>
+					<td>@x.Name</td>
+					<td>@x.Category.Name</td>
+					<td>@x.Color</td>
+					<td>@x.ListPrice</td>
+					<td>@x.Price100</td>
+					<td>@x.Price50</td>
+					<td>@x.Quantity</td>
+					<td>@x.SellQuantity</td>
+
+					<td>
+						<div class="d-flex align-items-center justify-content-center w-75 btn-group"  role="group">
+					@*		<a asp-controller="Category" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-light mx-2">
+								<i class="bi bi-pencil-square"></i>Edit
+							</a>*@
+							<a asp-controller="Invoice" asp-action="ProductDelete" asp-route-Id="@x.Id" class="btn btn-danger ms-5 p-1 " style="width: 50%">
+								Delete
+							</a>
+							<a asp-controller="Invoice" asp-action="ProductEdit" asp-route-id="@x.Id" class="btn btn-secondary me-3 mx-2 " style="width: 50%">
+								Edit
+							</a>
+						</div>
+
+
+					</td>
+				</tr>
+			}
+		</tbody>
+
+	</table>
+	<div />
+	<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="modal-title">Modal title</h5>
+		<button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+	  </div>
+	  <div class="modal-body">
+		<p>Modal body text goes here.</p>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Close</button>
+		<button type="button" class="btn btn-primary" data-mdb-ripple-init>Save changes</button>
+	  </div>
+	</div>
+  </div>
+</div>
+
+	@section Scripts {
+
+		<script>
+			$(function () {
+				$("#myModalLabel").modal("show");
+			});
+			$("#close").click(function () {
+				$("#myModalLabel").modal("hide");
+			});
+			$(function () {
+				$("#ModalLabel").modal("show");
+			});
+			$("#close").click(function () {
+				$("#ModalLabel").modal("hide");
+			});
+		</script>
+
+	}

@@ -1,0 +1,62 @@
+﻿@using Models.Models;
+@using WebApplication9.ViewModels
+@model SaleList
+
+<div class="container">
+	<div class="row pt-4 pb-3">
+		<div class="col-6">
+			<h2>Invoices list</h2>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-controller="Sale" asp-action="AddDetails"asp-route-id="@Model.InvNum" class="btn btn-primary">
+				ADD Details
+			</a>
+
+		</div>
+	</div>
+	<table class="table table-bordered table-dark">
+		<thead>
+			<tr>
+				<th>
+
+					Invoice Number
+				</th>
+
+				<th>
+					Sell Quantity
+				</th>
+				<th>
+					Creation Date
+				</th>
+
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var x in Model.sale)
+			{
+				<tr>
+					<td>@x.product.Name</td>
+					<td>@x.sellQ</td>
+					<td>@x.TheDate</td>
+		
+
+					<td>
+						<div class="d-flex align-items-center justify-content-center w-75 btn-group" role="group">
+									<a asp-controller="Sale" asp-action="SaleEdit" asp-route-Id="@x.Id" class="btn btn-light mx-2">
+					              	<i class="bi bi-pencil-square"></i>Edit
+					                  	</a>
+							<a asp-controller="Sale" asp-action="SaleDetailsDelete" asp-route-Id="@x.Id" class="btn btn-danger px-2">
+								Delete
+							</a>
+			
+						</div>
+
+
+					</td>
+				</tr>
+			}
+		</tbody>
+
+	</table>
+	<div />

@@ -1,0 +1,58 @@
+﻿@using WebApplication9.ViewModels
+@model InvoiceDetailsList
+<div class="container">
+	<div class="row pt-4 pb-3">
+		<div class="col-6">
+			<h2>Invoices list</h2>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-controller="Invoice" asp-action="AddDetails" asp-route-InvoiceId="@Model.InvoiceId" class="btn btn-primary">
+				Add Detail
+			</a>
+
+		</div>
+	</div>
+<table class="table table-bordered table-dark">
+	<thead>
+		<tr>
+			<th>
+
+				Product Name
+			</th>
+			<th>
+				Price
+			</th>
+			<th> Sale Price </th>
+			<th>Expiry Date </th>
+		</tr>
+	</thead>
+	<tbody>
+	@foreach(var a in Model.InvoiceDetails){  
+			<tr>
+						
+			<td>@a.Product.Name</td>
+			<td>@a.Price</td>
+			<td>@a.SalePrice</td>
+			<td>@a.ExpiryDate</td>
+		
+				<td>
+					<div class="w-75 btn-group" role="group">
+						@*<a asp-controller="Category" asp-action="Edit" class="btn btn-light mx-2">
+							<i class="bi bi-pencil-square"></i>Edit
+						</a>*@
+						<a asp-controller="Invoice" asp-route-x="@a.Id" asp-action="InvoiceDetailsDelete" class="btn btn-danger px-2.2">
+							Delete
+						</a>
+									<a asp-controller="Invoice" asp-route-id="@a.Id" asp-action="InvoiceEdit" class="btn btn-secondary px-2.2">
+								Edit
+							</a>
+					</div>
+
+
+
+				</td>
+			</tr>
+		}
+	</tbody>
+
+</table>

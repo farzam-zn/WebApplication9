@@ -1,0 +1,87 @@
+﻿@using Models.Models;
+@model Sale
+
+
+
+
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Invoice Details</h2>
+			<hr />
+			<div class="mb-3 row">
+				<label class="p-0">Color</label>
+				@*<input asp-for="invoiceDetails.ProductId" asp-route-Name="ProductName" asp-controller="Invoice" asp-action="Test" type="text" class="form-control" />*@
+				@*				<select asp-for="invoiceDetails.ProductId" asp-items="@(new SelectList(Model.Listofproducts))"></select>
+				*@
+				@*<select asp-for="@Model.invoiceDetails.ProductId" class="form-control" asp-items="@Model.Listofproducts"></select>		*@		@*	<div class="mb-3 row">
+				<label class="p-0">ComapnyName</label>
+
+				<select asp-for="@Model.companySupplier.Id" class="form-control" asp-items="@Model.Companylist"asp-controller="Invoice" asp-action="Test"></select>
+				</div>*@
+				@*	<div class="mb-3 row">
+				<label class="p-0">Quantity</label>
+				<input asp-for="Quantity" asp-controller="Invoice" asp-action="InvoiceEdit" type="hidden" class="form-control" />
+				@*					<input asp-for="invoiceDetails.InvoiceId" asp-controller="Invoice" asp-action="Test" type="hidden" class="form-control" />
+				*@		@*			<input asp-for="Quantity" asp-controller="Invoice" asp-action="InvoiceEdit" type="text" class="form-control" />
+				</div>*@
+				<input asp-for="SaleInvoiceId" asp-controller="Sale" asp-action="SaleEdit" type="hidden" class="form-control" />
+				<div class="mb-3 row">
+					<label class="p-0"></label>
+					<input asp-for="sellQ" asp-controller="Sale" asp-action="SaleEdit" type="text" class="form-control" />
+				</div>
+				@*<div class="mb-3 row">
+				<label class="p-0">Sale Price</label>
+				<input asp-for="" asp-controller="Invoice" asp-action="Test" type="text" class="form-control" />
+				</div>*@
+				<div class="mb-3 row">
+
+					<div class="form-group" asp-for="invoiceDetails.ExpiryDate" asp-controller="Invoice" asp-action="Test">
+						@*@Html.LabelFor(model=>model.invoiceDetails.ExpiryDate,new {@class="control-label"})*@
+						@*	@Html.EditorFor(model=>model.invoiceDetails.ExpiryDate,
+						new {AddHtmlAttributeValue=new {@readonly="true", value=  Model.invoiceDetails.ExpiryDate.ToString("dd,MMMM,yyyy"),
+						@class ="for-controler datepicker"
+						}}
+						)*@
+
+					</div>
+
+
+
+					@*	<label class="p-0">Expiry Date</label>
+					<input asp-for="invoiceDetails.ExpiryDate" asp-controller="Invoice" asp-action="Test" type="text" class="form-control" />*@
+				</div>
+				<div class="row">
+					<div class="col-6 col-md-3">
+						<button asp-controller="Sale" asp-route-Id="@Model.Id" asp-action="SaleEdit" type="submit" class="btn btn-primary form-control mx-2">Update</button>
+						<i class="bi bi-pencil-square"></i>
+					</div>
+					@*	<div class="col-6 col-md-3">
+					<button asp-controller="Invoice" asp-action="Invoice" type="submit" class="btn btn-primary form-control">Done</button>
+
+					</div>*@
+					<div class="col-6">
+						<a asp-controller="Sale" asp-action="SaleEdit" class="mx-2 btn btn-outline-secondary form-control">
+							back to list
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+</form>
+
+
+@section scripts {
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script>
+		$(function () {
+			$(".datepicker").datepicker({
+				dateformet: "yy-mm-dd",
+				changemonth: true,
+				changeYear: true,
+
+			});
+
+		})</script>
+}

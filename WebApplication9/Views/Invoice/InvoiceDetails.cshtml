@@ -1,0 +1,57 @@
+﻿@using WebApplication9.ViewModels
+@model List<ProductView>
+
+<div class="container">
+	<div class="row pt-4 pb-3">
+		<div class="col-6">
+		<h2>Category list</h2>
+	</div>
+	<div class="col-6 text-end">
+		<a  asp-action="Create" class="btn btn-primary">
+Create new category
+		</a>
+
+	</div>
+</div>
+</div>
+<table class="table table-bordered table-dark">
+	<thead>
+	<tr >
+		<th>
+
+Product Id
+		</th>
+		<th>
+			Company Name
+		</th>
+		<th>Price </th>
+				<th>Sale Price </th>
+	</tr>
+	</thead>
+	<tbody>
+			
+				<tr>
+			@*		<td>@obj.Product.Name</td>
+					<td>@obj.companySupplier.CompanyName</td>
+					<td>@obj.invoiceDetails.Price</td>
+					<td>@obj.invoiceDetails.SalePrice</td>
+				<td>@obj.invoiceDetails.ExpiryDate</td>*@
+
+					<td>
+						<div class="w-75 btn-group" role="group">
+								<a asp-controller="Category" asp-action="Edit"  class="btn btn-light mx-2">
+									<i class="bi bi-pencil-square"></i>Edit
+								</a>
+								<a asp-controller="Category" asp-action="Delete"  class="btn btn-danger px-2.2">
+									Delete
+								</a>
+						</div>
+
+
+
+					</td>
+				</tr>
+			
+	</tbody>
+
+</table>
